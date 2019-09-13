@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">POContactos</string>
+    <string name="add">Add new contact</string>
+    <string name="user">User:</string>
+    <string name="email">Email:</string>
+    <string name="twitter">Twitter:</string>
+    <string name="cellphone">Cellphone:</string>
+    <string name="birthday">Birthday:</string>
+    <string name="save">Save</string>
+</resources>
