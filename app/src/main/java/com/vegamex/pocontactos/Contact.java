@@ -1,10 +1,8 @@
 package com.vegamex.pocontactos;
 
-import android.os.Parcel;
-import android.os.Parcelable;
 import java.util.Date;
 
-public class Contact implements Parcelable {
+public class Contact {
 
     private String user;
     private String email;
@@ -59,40 +57,4 @@ public class Contact implements Parcelable {
     public void setBirthdate(Date birthdate) {
         this.birthdate = birthdate;
     }
-
-    protected Contact(Parcel in) {
-        user = in.readString();
-        email = in.readString();
-        twitter = in.readString();
-        cellphone = in.readString();
-        long tmpBirthdate = in.readLong();
-        birthdate = tmpBirthdate != -1 ? new Date(tmpBirthdate) : null;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(user);
-        dest.writeString(email);
-        dest.writeString(twitter);
-        dest.writeString(cellphone);
-        dest.writeLong(birthdate != null ? birthdate.getTime() : -1L);
-    }
-
-    @SuppressWarnings("unused")
-    public static final Parcelable.Creator<Contact> CREATOR = new Parcelable.Creator<Contact>() {
-        @Override
-        public Contact createFromParcel(Parcel in) {
-            return new Contact(in);
-        }
-
-        @Override
-        public Contact[] newArray(int size) {
-            return new Contact[size];
-        }
-    };
 }
