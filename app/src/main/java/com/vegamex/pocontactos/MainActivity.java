@@ -1,14 +1,14 @@
 package com.vegamex.pocontactos;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,11 +23,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         model = new ArrayList<Contact>();
-
-        model.add(new Contact("Oscar", "vegamex@gmail.com", "@VegaMexSB", "4451151484", new Date(1998,7,17)));
-
+        model.add(new Contact("Oscar", "vegamex1@gmail.com", "@VegaMexSB", "4451151484", "17 de julio de 1998"));
         myAdapter = new Adapter(model, this);
-
         contactList = (ListView) findViewById(R.id.contactList);
         contactList.setAdapter(myAdapter);
 
@@ -35,10 +32,27 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, formaClass.class);
-                startActivity(intent);
-                //Aplicacion app = (Aplicacion) getApplication();
-                //app.getListaContactos();
+                startActivityForResult(intent, 1000);
             }
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == MainActivity.RESULT_OK){
+            Contact c = (Contact)data.getSerializableExtra("contact");
+            model.add(c);
+            Toast.makeText(this, "Se guardó a : " + c.getUser(), Toast.LENGTH_SHORT).show();
+            refresh();
+        }else{
+            Toast.makeText(this, "No se guardó nada, F", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void refresh(){
+        myAdapter = new Adapter(model, this);
+        contactList.setAdapter(myAdapter);
+    }
 }
+

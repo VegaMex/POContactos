@@ -1,16 +1,17 @@
 package com.vegamex.pocontactos;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Contact {
+public class Contact implements Serializable {
 
     private String user;
     private String email;
     private String twitter;
     private String cellphone;
-    private Date birthdate;
+    private String birthdate;
 
-    public Contact(String user, String email, String twitter, String cellphone, Date birthdate) {
+    public Contact(String user, String email, String twitter, String cellphone, String birthdate) {
         this.user = user;
         this.email = email;
         this.twitter = twitter;
@@ -50,11 +51,11 @@ public class Contact {
         this.cellphone = cellphone;
     }
 
-    public Date getBirthdate() {
+    public String getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
 }
