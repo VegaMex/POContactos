@@ -5,14 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class formaClass extends AppCompatActivity {
 
     EditText _txtUser, _txtEmail, _txtTwitter, _txtCellphone, _txtBirthday;
-    Button _btnSave;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -1,7 +1,6 @@
 package com.vegamex.pocontactos;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Contact implements Serializable {
 
