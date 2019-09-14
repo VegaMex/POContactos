@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         model = new ArrayList<Contact>();
-        model.add(new Contact("Oscar", "vegamex1@gmail.com", "@VegaMexSB", "4451151484", "17 de julio de 1998"));
+        model.add(new Contact("Óscar", "vegamex1@gmail.com", "@VegaMexSB", "4451151484", "17 de julio de 1998"));
         myAdapter = new Adapter(model, this);
         contactList = (ListView) findViewById(R.id.contactList);
         contactList.setAdapter(myAdapter);
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         if(resultCode == MainActivity.RESULT_OK){
             Contact c = (Contact)data.getSerializableExtra("contact");
             model.add(c);
-            Toast.makeText(this, "Se guardó a : " + c.getUser(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Se guardó a: " + c.getUser(), Toast.LENGTH_SHORT).show();
             refresh();
         }else{
             Toast.makeText(this, "No se guardó nada, F", Toast.LENGTH_SHORT).show();
